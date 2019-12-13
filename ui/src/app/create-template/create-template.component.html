@@ -1,0 +1,45 @@
+<div class="row main">
+    <div class="col-sm-3">
+        <div class="card">
+            <div class="card-header">
+                Content
+            </div>
+            <div class="content-details">
+                <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+                    <div class="card-body row">
+                        <h5 class="card-text col-sm-9">Text</h5>
+                        <button class="btn btn-primary" (click)="addText(1)">Add</button>
+                    </div>
+                </div>
+                <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+                    <div class="card-body row">
+                        <h5 class="card-text col-sm-9">Button</h5>
+                        <button class="btn btn-primary" (click)="addText(2)">Add</button>
+                    </div>
+                </div>
+                <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+                    <div class="card-body row">
+                        <h5 class="card-text col-sm-9">Splitter</h5>
+                        <button class="btn btn-primary" (click)="addText(3)">Add</button>
+                    </div>
+                </div>
+                <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+                    <div class="card-body row">
+                        <h5 class="card-text col-sm-9">Image</h5>
+                        <button class="btn btn-primary" (click)="addText(4)">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-9">
+        <div class="card">
+            <div class="card-header">
+                Mail Template
+            </div>
+            <div class="content-details" *ngFor="let templateItem of template.templateItemList;">
+                <app-template-item [templateItem]="templateItem"></app-template-item>
+            </div>
+        </div>
+    </div>
+</div>

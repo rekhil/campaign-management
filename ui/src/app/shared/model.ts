@@ -2,8 +2,8 @@
 export enum TemplateItemType {
     text = 1,
     button = 2,
-    label = 3,
-    splitter = 4
+    splitter = 3,
+    image = 4
 }
 
 export class TemplateItem {

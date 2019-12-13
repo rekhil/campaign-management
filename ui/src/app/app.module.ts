@@ -5,18 +5,26 @@ import { AppComponent } from './app.component';
 import { DataService } from './shared/service';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
+import { CreateTemplateComponent } from './create-template/create-template.component';
+import { AvailableTemplateComponent } from './available-templates/available-templates.component';
+import { SendEmailComponent } from './send-email/send-email.component';
+import { TemplateItemComponent } from './template-item/template-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    CreateTemplateComponent,
+    AvailableTemplateComponent,
+    SendEmailComponent,
+    TemplateItemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
   providers: [DataService],
-  bootstrap: [AppComponent] 
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
