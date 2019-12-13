@@ -32,8 +32,9 @@
             </div>
         </div>
         <div *ngIf="showProperty" class="card">
-            <app-item-property [templateItem]="selectedItem" (closePropertyDetailsEmitter)="closePropertyWindow()"
-                (deleteItemEmitter)="deleteItem()">
+            <app-item-property class="item-property" [templateItem]="selectedItem"
+                (closePropertyDetailsEmitter)="closePropertyWindow()" (deleteItemEmitter)="deleteItem()"
+                (moveUpItemEmitter)="moveUpItem()" (moveDownItemEmitter)="moveDownItem()">
             </app-item-property>
         </div>
     </div>
@@ -41,6 +42,10 @@
         <div class="card">
             <div class="card-header">
                 Mail Template
+                <button [disabled]="template.templateItemList.length == 0" class="btn btn-primary save-template"
+                    (click)="saveMailTemplate()">Save Mail Template</button>
+                <button [disabled]="template.templateItemList.length == 0" class="btn btn-primary send-mail"
+                    (click)="sendMail()">Send Mail</button>
             </div>
             <div class="content-details" *ngFor="let templateItem of template.templateItemList;">
                 <app-template-item [templateItem]="templateItem" (showPropertyWindow)="showPropertyWindow($event)">

@@ -24,6 +24,7 @@ export class CreateTemplateComponent {
         if (templateType == TemplateItemType.text) {
             templateItem.value = "This is a text block. You can use it to add text to your template";
         } else if (templateType == TemplateItemType.button) {
+            templateItem.width = 100;
             templateItem.value = "Button Text";
         }
         this.template.templateItemList.push(templateItem);
@@ -42,5 +43,43 @@ export class CreateTemplateComponent {
         this.showProperty = false;
         var index = this.template.templateItemList.indexOf(this.selectedItem);
         this.template.templateItemList.splice(index, 1);
+    }
+
+    public moveUpItem() {
+        var index = this.template.templateItemList.indexOf(this.selectedItem);
+        if (index == 0) {
+            return;
+        }
+        var itemToMove = this.template.templateItemList.splice(index, 1);
+        const copyList = []
+        this.template.templateItemList.forEach((element, i) => {
+            if (i === index - 1) {
+                copyList.push(itemToMove[0]);
+            }
+            copyList.push(element);
+        });
+        this.template.templateItemList.length = 0;
+        copyList.forEach(element => {
+            this.template.templateItemList.push(element);
+        });
+    }
+
+    public moveDownItem() {
+        var index = this.template.templateItemList.indexOf(this.selectedItem);
+        if (index == this.template.templateItemList.length - 1) {
+            return;
+        }
+        var itemToMove = this.template.templateItemList.splice(index, 1);
+        const copyList = []
+        this.template.templateItemList.forEach((element, i) => {
+            copyList.push(element);
+            if (i === index) {
+                copyList.push(itemToMove[0]);
+            }
+        });
+        this.template.templateItemList.length = 0;
+        copyList.forEach(element => {
+            this.template.templateItemList.push(element);
+        });
     }
 }

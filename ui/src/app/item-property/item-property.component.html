@@ -1,2 +1,28 @@
-<button class="btn btn-primary" (click)="close()">Close</button>
-<button class="btn btn-primary" (click)="delete()">Delete</button>
+<div class="row">
+    <button class="btn btn-primary button-padding" (click)="delete()">Delete</button>
+    <button class="btn btn-primary button-padding" (click)="moveUp()">Move Up</button>
+    <button class="btn btn-primary button-padding" (click)="moveDown()">Move Down</button>
+</div>
+<div *ngIf="isValueRequired" class="d-flex flex-row row-item">
+    <label class="label">Text:</label>
+    <input [(ngModel)]="templateItem.value" type="text" name="value" class="form-control" id="value" width="100px"
+        placeholder="Enter Value" required>
+</div>
+<div class="d-flex flex-row row-item">
+    <label class="label">Width %:</label>
+    <input [(ngModel)]="templateItem.width" type="number" name="width" class="form-control" id="width" min="0" max="100"
+        required>
+</div>
+<div class="d-flex flex-row row-item">
+    <label class="label">Height %:</label>
+    <input [(ngModel)]="templateItem.height" type="number" name="height" class="form-control" id="height" min="0"
+        max="100" required>
+</div>
+<div *ngIf="isFontSizeRequired" class="d-flex flex-row row-item">
+    <label class="label">Font Size %:</label>
+    <input [(ngModel)]="templateItem.fontSize" type="number" name="fontSize" class="form-control" id="fontSize" min="0"
+        max="100" required>
+</div>
+<div class="row-item">
+    <button class="btn btn-primary" (click)="close()">Close</button>
+</div>
