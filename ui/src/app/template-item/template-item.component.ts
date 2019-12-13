@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { TemplateItem } from '../shared/model';
 
 @Component({
@@ -8,8 +8,13 @@ import { TemplateItem } from '../shared/model';
 })
 export class TemplateItemComponent {
     @Input() templateItem: TemplateItem;
+    @Output() showPropertyWindow: EventEmitter<any>;
+
+    constructor() {
+        this.showPropertyWindow = new EventEmitter<any>();
+    }
 
     public showProperties() {
-        this.templateItem.value = "clicked";
+        this.showPropertyWindow.emit(this.templateItem);
     }
 }

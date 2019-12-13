@@ -1,7 +1,9 @@
 .card-padding{
     padding: 3px;
+    cursor: default;
 }
 
 .card-padding:hover {
     background-color: silver;
+    cursor: pointer;
   }

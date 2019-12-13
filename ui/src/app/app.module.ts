@@ -9,6 +9,7 @@ import { CreateTemplateComponent } from './create-template/create-template.compo
 import { AvailableTemplateComponent } from './available-templates/available-templates.component';
 import { SendEmailComponent } from './send-email/send-email.component';
 import { TemplateItemComponent } from './template-item/template-item.component';
+import { ItemPropertyComponent } from './item-property/item-property.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { TemplateItemComponent } from './template-item/template-item.component';
     CreateTemplateComponent,
     AvailableTemplateComponent,
     SendEmailComponent,
-    TemplateItemComponent
+    TemplateItemComponent,
+    ItemPropertyComponent
   ],
   imports: [
     BrowserModule,
