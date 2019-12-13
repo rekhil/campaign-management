@@ -15,6 +15,7 @@ export class TemplateItem {
     isItalics: boolean;
     height: number;
     width: number;
+    redirectUrl: string;
 }
 
 export class Template {
