@@ -27,5 +27,18 @@ export class Template {
     templateItemList: TemplateItem[];
 }
 
+export class Subscriber {
+    mailId: string;
+    name: string;
+    isSubscribed: boolean;
+    dob: Date;
+    gender: boolean;
+}
+
+export class MailDetails {
+    subscriberList: Subscriber[];
+    template: Template;
+}
+
 
 
