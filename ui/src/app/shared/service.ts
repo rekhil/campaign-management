@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Template } from './model'
+import { Template, MailDetails } from './model'
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -24,7 +24,7 @@ export class DataService {
         return this.http.post<Template>(this.baseUrl + 'template/post', template);
     }
 
-    public sendEmail(template: Template): Observable<any> {
-        return this.http.post<Template>(this.baseUrl + 'sened', template);
+    public sendEmail(mailDetails: MailDetails): Observable<any> {
+        return this.http.post<Template>(this.baseUrl + 'send', mailDetails);
     }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { TemplateItem, Template, TemplateItemType } from '../shared/model';
+import { TemplateItem, Template, TemplateItemType, MailDetails, Subscriber } from '../shared/model';
 import { DataService } from '../shared/service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -150,7 +150,19 @@ export class CreateTemplateComponent implements OnInit, OnDestroy {
     }
 
     public sendMail() {
-        this.dataService.sendEmail(this.template).subscribe(
+        const mailDetails = new MailDetails();
+        mailDetails.template = this.template;
+        mailDetails.subscriberList = [];
+
+        const subscriber1 = new Subscriber();
+        subscriber1.mailId = "rekhildevadasan@gmail.com";
+        mailDetails.subscriberList.push(subscriber1);
+
+        const subscriber2 = new Subscriber();
+        subscriber2.mailId = "didhinsuresh272@gmail.com";
+        mailDetails.subscriberList.push(subscriber2);
+
+        this.dataService.sendEmail(mailDetails).subscribe(
             (sucessResponse) => {
                 this.createNewObject();
             },
