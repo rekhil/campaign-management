@@ -1,14 +1,16 @@
-<div *ngIf="templateItem?.templateType == 1" class="card">
-    <button class="text btn-secondary">{{templateItem?.value}}</button>
+<div *ngIf="templateItem?.templateType == 1" class="card card-padding" (click)="showProperties()">
+    <textarea disabled class="text btn-secondary">{{templateItem?.value}}</textarea>
 </div>
 <div *ngIf="templateItem?.templateType == 2" class="card card-padding" (click)="showProperties()">
     <div align="center">
         <button disabled class="btn btn-primary">{{templateItem?.value}}</button>
     </div>
 </div>
-<div *ngIf="templateItem?.templateType == 3" class="card">
+<div *ngIf="templateItem?.templateType == 3" class="card" (click)="showProperties()">
 
 </div>
-<div *ngIf="templateItem?.templateType == 4" class="card">
-
+<div *ngIf="templateItem?.templateType == 4" class="card card-padding" (click)="showProperties()">
+    <div class="d-flex flex-column">
+        <img height="100" class="card-img-top p-2 bd-highlight img" [src]="templateItem.filePath" alt="Add image here">
+    </div>
 </div>

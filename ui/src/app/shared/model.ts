@@ -17,6 +17,7 @@ export class TemplateItem {
     height: number;
     width: number;
     redirectUrl: string;
+    filePath: string;
 }
 
 export class Template {

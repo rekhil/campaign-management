@@ -46,14 +46,30 @@ export class CreateTemplateComponent implements OnInit, OnDestroy {
         this.showProperty = false;
     }
 
-    public addText(templateType: number) {
+    public addTemplateItem(templateType: number) {
         const templateItem = new TemplateItem();
         templateItem.templateType = templateType;
         if (templateType == TemplateItemType.text) {
+            templateItem.width = 100;
+            templateItem.height = 20;
             templateItem.value = "This is a text block. You can use it to add text to your template";
+            templateItem.fontColor = "black";
+            templateItem.fontSize = 10;
+            templateItem.isBold = false;
+            templateItem.isItalics = false;
         } else if (templateType == TemplateItemType.button) {
             templateItem.width = 100;
+            templateItem.height = 20;
             templateItem.value = "Button Text";
+            templateItem.fontColor = "black";
+            templateItem.fontSize = 10;
+            templateItem.isBold = false;
+            templateItem.isItalics = false;
+            templateItem.redirectUrl = '';
+        } else if (templateType == TemplateItemType.image) {
+            templateItem.width = 100;
+            templateItem.height = 50;
+            templateItem.redirectUrl = '';
         }
         this.template.templateItemList.push(templateItem);
     }

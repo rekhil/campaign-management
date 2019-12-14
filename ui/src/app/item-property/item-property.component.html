@@ -28,6 +28,9 @@
     <input [(ngModel)]="templateItem.redirectUrl" type="text" name="redirectUrl" class="form-control" id="redirectUrl"
         min="0" max="100" required>
 </div>
+<div *ngIf="isFilePathRequired" class="d-flex flex-row row-item">
+    <input type="file" id="fileselect" name="fileselect" accept="image/*" (change)="fileChanged($event)" />
+</div>
 <div class="row-item">
     <button class="btn btn-primary" (click)="close()">Close</button>
 </div>

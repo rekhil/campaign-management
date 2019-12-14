@@ -42,6 +42,11 @@ export class ItemPropertyComponent {
         return this.templateItem.templateType == TemplateItemType.button;
     }
 
+    public get isFilePathRequired() {
+        return this.templateItem.templateType == TemplateItemType.image;
+    }
+
+
 
     constructor() {
         this.closePropertyDetailsEmitter = new EventEmitter<any>();
@@ -64,5 +69,15 @@ export class ItemPropertyComponent {
 
     public moveDown() {
         this.moveDownItemEmitter.emit();
+    }
+
+    public addFile($event) {
+        if ($event.target.files && $event.target.files[0]) {
+            var reader = new FileReader();
+            reader.onload = (result: any) => {
+                this.templateItem.filePath = result.target.result;
+            }
+            reader.readAsDataURL($event.target.files[0]);
+        }
     }
 }
