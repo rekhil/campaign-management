@@ -15,7 +15,7 @@ export class CreateTemplateComponent implements OnInit, OnDestroy {
     private sub: any;
 
     public get saveButtonText(): string {
-        return this.template.templateId == 0 ? "Save Mail Template" : "Update Mail Template";
+        return this.template.templateId ? "Update Mail Template" : "Save Mail Template";
     }
 
     constructor(public dataService: DataService,
@@ -27,9 +27,9 @@ export class CreateTemplateComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.sub = this.route.params.subscribe(params => {
             const templateId = params['id'];
-            this.template.templateId = templateId ? +templateId : 0;
-            if (this.template.templateId > 0) {
-                this.GetTemplateDetailsById();
+            this.template.templateId = templateId ? templateId : null;
+            if (this.template.templateId) {
+                this.GetTemplateDetailsById(this.template.templateId);
             }
         });
     }
@@ -40,7 +40,7 @@ export class CreateTemplateComponent implements OnInit, OnDestroy {
 
     public createNewObject() {
         this.template = new Template();
-        this.template.templateId = 0;
+        this.template.templateId = null;
         this.template.name = "new template";
         this.template.templateItemList = [];
         this.showProperty = false;
@@ -114,7 +114,7 @@ export class CreateTemplateComponent implements OnInit, OnDestroy {
     public saveMailTemplate() {
         this.dataService.createTemplateDetails(this.template).subscribe(
             (sucessResponse) => {
-                this.GetTemplateDetailsById();
+                this.GetTemplateDetailsById(sucessResponse.templateId);
             },
             (errorResponse) => {
 
@@ -122,7 +122,7 @@ export class CreateTemplateComponent implements OnInit, OnDestroy {
         );
     }
 
-    public GetTemplateDetailsById() {
+    public GetTemplateDetailsById(templateId: string) {
         this.dataService.getTemplateDetailsById(this.template.templateId).subscribe(
             (sucessResponse) => {
                 this.template = sucessResponse;

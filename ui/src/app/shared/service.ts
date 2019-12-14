@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class DataService {
 
-    private baseUrl = 'https://digitalsignageapi20191002101801.azurewebsites.net/api/';
+    private baseUrl = ' https://webapplication120191214123426.azurewebsites.net/';
 
     constructor(private http: HttpClient) { }
 
@@ -16,12 +16,12 @@ export class DataService {
         return this.http.get(this.baseUrl + 'template');
     }
 
-    public getTemplateDetailsById(templateId: number): Observable<any> {
-        return this.http.get(this.baseUrl + 'template/' + templateId);
+    public getTemplateDetailsById(templateId: string): Observable<any> {
+        return this.http.get(this.baseUrl + 'template/get/' + templateId);
     }
 
     public createTemplateDetails(template: Template): Observable<any> {
-        return this.http.post<Template>(this.baseUrl + 'template', template);
+        return this.http.post<Template>(this.baseUrl + 'template/post', template);
     }
 
     public sendEmail(template: Template): Observable<any> {
