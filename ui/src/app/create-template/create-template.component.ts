@@ -18,6 +18,10 @@ export class CreateTemplateComponent implements OnInit, OnDestroy {
         return this.template.templateId ? "Update Mail Template" : "Save Mail Template";
     }
 
+    public get saveSendButtonText(): string {
+        return this.template.templateId ? "Update Template And Send Mail" : "Save Template And Send Mail";
+    }
+
     constructor(public dataService: DataService,
         private route: ActivatedRoute,
         private router: Router) {
@@ -149,7 +153,7 @@ export class CreateTemplateComponent implements OnInit, OnDestroy {
         );
     }
 
-    public sendMail() {
+    public sendMail(saveTemplate: boolean) {
         const mailDetails = new MailDetails();
         mailDetails.template = this.template;
         mailDetails.subscriberList = [];
@@ -161,6 +165,8 @@ export class CreateTemplateComponent implements OnInit, OnDestroy {
         const subscriber2 = new Subscriber();
         subscriber2.mailId = "didhinsuresh272@gmail.com";
         mailDetails.subscriberList.push(subscriber2);
+
+        mailDetails.saveTemplate = saveTemplate;
 
         this.dataService.sendEmail(mailDetails).subscribe(
             (sucessResponse) => {

@@ -37,6 +37,7 @@ export class Subscriber {
 }
 
 export class MailDetails {
+    saveTemplate: boolean;
     subscriberList: Subscriber[];
     template: Template;
 }

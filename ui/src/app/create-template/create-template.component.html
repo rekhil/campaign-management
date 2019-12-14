@@ -41,11 +41,17 @@
     <div class="col-sm-9">
         <div class="card">
             <div class="card-header">
-                Mail Template
-                <button [disabled]="template.templateItemList.length == 0" class="btn btn-primary save-template"
-                    (click)="saveMailTemplate()">{{saveButtonText}}</button>
+                <div>Mail Template</div>
+
                 <button [disabled]="template.templateItemList.length == 0" class="btn btn-primary send-mail"
-                    (click)="sendMail()">Send Mail</button>
+                    (click)="saveMailTemplate()">{{saveButtonText}}</button>
+
+                <button [disabled]="template.templateItemList.length == 0" class="btn btn-primary send-mail"
+                    (click)="sendMail(true)">{{saveSendButtonText}}</button>
+
+                <button [disabled]="template.templateItemList.length == 0" class="btn btn-primary send-mail"
+                    (click)="sendMail(false)">Send Mail</button>
+
                 <button *ngIf="template.templateId" class="btn btn-primary send-mail" (click)="createNewObject()">Create
                     New</button>
             </div>
