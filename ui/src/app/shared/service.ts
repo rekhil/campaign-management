@@ -13,7 +13,7 @@ export class DataService {
     constructor(private http: HttpClient) { }
 
     public getAllTemplates(): Observable<any> {
-        return this.http.get(this.baseUrl + 'template');
+        return this.http.get(this.baseUrl + 'template/get');
     }
 
     public getTemplateDetailsById(templateId: string): Observable<any> {
