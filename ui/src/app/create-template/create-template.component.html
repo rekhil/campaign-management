@@ -65,11 +65,11 @@
                 <button [disabled]="template.templateItemList.length == 0" class="btn btn-primary send-mail"
                     (click)="preview()">Preview >></button>
 
-                <button *ngIf=" template.templateId" class="btn btn-primary send-mail"
+                <button *ngIf=" template.templateId" class="btn btn-primary send-mail1"
                     (click)="createNewObject()">Create
                     New</button>
 
-                <button class="btn btn-primary send-mail" (click)="chooseTemplate()">Choose
+                <button class="btn btn-primary send-mail" (click)="chooseTemplate()">Choose Another
                     Template</button>
             </div>
             <div class="content-details" *ngFor="let templateItem of template.templateItemList;">
