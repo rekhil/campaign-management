@@ -177,4 +177,8 @@ export class CreateTemplateComponent implements OnInit, OnDestroy {
             }
         );
     }
+
+    public chooseTemplate() {
+        this.router.navigate(['/templatelist']);
+    }
 }

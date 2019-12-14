@@ -11,6 +11,7 @@ import { CreateTemplateComponent } from './create-template/create-template.compo
 import { TemplateItemComponent } from './template-item/template-item.component';
 import { ItemPropertyComponent } from './item-property/item-property.component';
 import { TemplateListComponent } from './template-list/template-list.component';
+import { SubscribersComponent } from './subscribers/subscribers.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TemplateListComponent } from './template-list/template-list.component';
     CreateTemplateComponent,
     TemplateItemComponent,
     ItemPropertyComponent,
-    TemplateListComponent
+    TemplateListComponent,
+    SubscribersComponent
   ],
   imports: [
     BrowserModule,
