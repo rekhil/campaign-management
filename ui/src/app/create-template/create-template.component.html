@@ -1,5 +1,5 @@
 <div class="row main">
-    <div class="col-sm-3">
+    <div *ngIf="!isPreview" class="col-sm-3">
         <div *ngIf="!showProperty" class="card">
             <div class="card-header">
                 Content
@@ -41,7 +41,7 @@
     <div class="col-sm-9">
         <div class="card">
             <div class="card-header">
-                <div class="card">
+                <div *ngIf="!isPreview" class="card">
                     <div class="d-flex flex-row row-item">
                         <label class="label">Template Name:</label>
                         <input [(ngModel)]="template.name" type="text" name="name" class="form-control" id="name"
@@ -59,19 +59,26 @@
                     </div>
                 </div>
 
-                <button [disabled]="template.templateItemList.length == 0" class="btn btn-primary send-mail"
+                <button *ngIf="isPreview" class="btn btn-primary send-mail"
                     (click)="saveMailTemplate()">{{saveButtonText}}</button>
 
-                <button [disabled]="template.templateItemList.length == 0" class="btn btn-primary send-mail"
+                <button *ngIf="isPreview" class="btn btn-primary send-mail"
                     (click)="sendMail(true)">{{saveSendButtonText}}</button>
 
-                <button [disabled]="template.templateItemList.length == 0" class="btn btn-primary send-mail"
-                    (click)="sendMail(false)">Send Mail</button>
+                <button *ngIf="isPreview" class="btn btn-primary send-mail" (click)="sendMail(false)">Send Mail</button>
 
-                <button *ngIf="template.templateId" class="btn btn-primary send-mail" (click)="createNewObject()">Create
+                <button *ngIf="isPreview" class="btn btn-primary send-mail" (click)="backToEdit()">Edit
+                    Template</button>
+
+                <button *ngIf="!isPreview" [disabled]="template.templateItemList.length == 0"
+                    class="btn btn-primary send-mail" (click)="preview()">Preview >></button>
+
+                <button *ngIf="!isPreview && template.templateId" class="btn btn-primary send-mail"
+                    (click)="createNewObject()">Create
                     New</button>
 
-                <button class="btn btn-primary send-mail" (click)="chooseTemplate()">Choose Template</button>
+                <button *ngIf="!isPreview" class="btn btn-primary send-mail" (click)="chooseTemplate()">Choose
+                    Template</button>
             </div>
             <div class="content-details" *ngFor="let templateItem of template.templateItemList;">
                 <app-template-item [templateItem]="templateItem" (showPropertyWindow)="showPropertyWindow($event)">
