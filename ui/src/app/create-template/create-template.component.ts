@@ -14,6 +14,7 @@ export class CreateTemplateComponent implements OnInit, OnDestroy {
     public showProperty: boolean;
     private sub: any;
     public isPreview = false;
+    public mode = 1;
 
     public get saveButtonText(): string {
         return this.template.templateId ? "Update Mail Template" : "Save Mail Template";
@@ -46,7 +47,6 @@ export class CreateTemplateComponent implements OnInit, OnDestroy {
     public createNewObject() {
         this.template = new Template();
         this.template.templateId = null;
-        this.template.name = "new template";
         this.template.templateItemList = [];
         this.showProperty = false;
     }
@@ -189,5 +189,13 @@ export class CreateTemplateComponent implements OnInit, OnDestroy {
 
     public backToEdit() {
         this.isPreview = false;
+    }
+
+    public onModeChange(value: any) {
+        this.mode = value;
+    }
+
+    public onCategoryChange(value: any) {
+        this.template.category = value;
     }
 }
