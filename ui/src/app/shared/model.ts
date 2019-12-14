@@ -7,6 +7,7 @@ export enum TemplateItemType {
 }
 
 export class TemplateItem {
+    templateItemId: number;
     templateType: TemplateItemType;
     value: string;
     fontSize: number;
@@ -19,6 +20,7 @@ export class TemplateItem {
 }
 
 export class Template {
+    templateId: number;
     name: string;
     templateItemList: TemplateItem[];
 }

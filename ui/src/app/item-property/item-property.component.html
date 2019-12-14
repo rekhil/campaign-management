@@ -23,6 +23,11 @@
     <input [(ngModel)]="templateItem.fontSize" type="number" name="fontSize" class="form-control" id="fontSize" min="0"
         max="100" required>
 </div>
+<div *ngIf="isRedirectUrlRequired" class="d-flex flex-row row-item">
+    <label class="label">Redirect URL:</label>
+    <input [(ngModel)]="templateItem.redirectUrl" type="text" name="redirectUrl" class="form-control" id="redirectUrl"
+        min="0" max="100" required>
+</div>
 <div class="row-item">
     <button class="btn btn-primary" (click)="close()">Close</button>
 </div>

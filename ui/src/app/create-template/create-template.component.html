@@ -42,8 +42,10 @@
         <div class="card">
             <div class="card-header">
                 Mail Template
+                <button *ngIf="template.templateId > 0" class="btn btn-primary save-template"
+                    (click)="createNewObject()">Create New</button>
                 <button [disabled]="template.templateItemList.length == 0" class="btn btn-primary save-template"
-                    (click)="saveMailTemplate()">Save Mail Template</button>
+                    (click)="saveMailTemplate()">{{saveButtonText}}</button>
                 <button [disabled]="template.templateItemList.length == 0" class="btn btn-primary send-mail"
                     (click)="sendMail()">Send Mail</button>
             </div>
