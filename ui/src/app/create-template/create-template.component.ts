@@ -114,7 +114,7 @@ export class CreateTemplateComponent implements OnInit, OnDestroy {
     public saveMailTemplate() {
         this.dataService.createTemplateDetails(this.template).subscribe(
             (sucessResponse) => {
-                this.GetTemplateDetailsById(sucessResponse.templateId);
+                this.GetTemplateDetailsById(sucessResponse);
             },
             (errorResponse) => {
 
@@ -123,7 +123,7 @@ export class CreateTemplateComponent implements OnInit, OnDestroy {
     }
 
     public GetTemplateDetailsById(templateId: string) {
-        this.dataService.getTemplateDetailsById(this.template.templateId).subscribe(
+        this.dataService.getTemplateDetailsById(templateId).subscribe(
             (sucessResponse) => {
                 this.template = sucessResponse;
             },

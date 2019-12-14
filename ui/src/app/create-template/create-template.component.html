@@ -46,7 +46,7 @@
                     (click)="saveMailTemplate()">{{saveButtonText}}</button>
                 <button [disabled]="template.templateItemList.length == 0" class="btn btn-primary send-mail"
                     (click)="sendMail()">Send Mail</button>
-                <button *ngIf="template.templateId > 0" class="btn btn-primary send-mail" (click)="createNewObject()">Create
+                <button *ngIf="template.templateId" class="btn btn-primary send-mail" (click)="createNewObject()">Create
                     New</button>
             </div>
             <div class="content-details" *ngFor="let templateItem of template.templateItemList;">
