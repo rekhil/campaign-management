@@ -8,9 +8,9 @@ import { DataService } from './shared/service';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { CreateTemplateComponent } from './create-template/create-template.component';
-import { AvailableTemplateComponent } from './available-templates/available-templates.component';
 import { TemplateItemComponent } from './template-item/template-item.component';
 import { ItemPropertyComponent } from './item-property/item-property.component';
+import { TemplateListComponent } from './template-list/template-list.component';
 
 @NgModule({
   declarations: [
@@ -18,9 +18,9 @@ import { ItemPropertyComponent } from './item-property/item-property.component';
     HeaderComponent,
     HomeComponent,
     CreateTemplateComponent,
-    AvailableTemplateComponent,
     TemplateItemComponent,
-    ItemPropertyComponent
+    ItemPropertyComponent,
+    TemplateListComponent
   ],
   imports: [
     BrowserModule,

@@ -22,6 +22,8 @@ export class TemplateItem {
 export class Template {
     templateId: number;
     name: string;
+    description: string;
+    category: string;
     templateItemList: TemplateItem[];
 }
 

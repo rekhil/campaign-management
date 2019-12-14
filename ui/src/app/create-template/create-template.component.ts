@@ -1,22 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TemplateItem, Template, TemplateItemType } from '../shared/model';
 import { DataService } from '../shared/service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'app-create-template',
     templateUrl: './create-template.component.html',
     styleUrls: ['./create-template.component.scss']
 })
-export class CreateTemplateComponent {
+export class CreateTemplateComponent implements OnInit, OnDestroy {
     public template: Template;
     public selectedItem = new TemplateItem();
     public showProperty: boolean;
+    private sub: any;
+
     public get saveButtonText(): string {
         return this.template.templateId == 0 ? "Save Mail Template" : "Update Mail Template";
     }
 
-    constructor(public dataService: DataService) {
+    constructor(public dataService: DataService,
+        private route: ActivatedRoute,
+        private router: Router) {
         this.createNewObject();
+    }
+
+    ngOnInit() {
+        this.sub = this.route.params.subscribe(params => {
+            const templateId = params['id'];
+            this.template.templateId = templateId ? +templateId : 0;
+            if (this.template.templateId > 0) {
+                this.GetTemplateDetailsById();
+            }
+        });
+    }
+
+    ngOnDestroy() {
+        this.sub.unsubscribe();
     }
 
     public createNewObject() {
@@ -95,7 +114,7 @@ export class CreateTemplateComponent {
     public saveMailTemplate() {
         this.dataService.createTemplateDetails(this.template).subscribe(
             (sucessResponse) => {
-                this.template.templateId = sucessResponse.templateId;
+                this.GetTemplateDetailsById();
             },
             (errorResponse) => {
 
@@ -103,7 +122,25 @@ export class CreateTemplateComponent {
         );
     }
 
-    public sendMail() {
+    public GetTemplateDetailsById() {
+        this.dataService.getTemplateDetailsById(this.template.templateId).subscribe(
+            (sucessResponse) => {
+                this.template = sucessResponse;
+            },
+            (errorResponse) => {
+                this.router.navigate(['/template']);
+            }
+        );
+    }
 
+    public sendMail() {
+        this.dataService.sendEmail(this.template).subscribe(
+            (sucessResponse) => {
+                this.createNewObject();
+            },
+            (errorResponse) => {
+                this.createNewObject();
+            }
+        );
     }
 }

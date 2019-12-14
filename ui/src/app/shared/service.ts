@@ -23,4 +23,8 @@ export class DataService {
     public createTemplateDetails(template: Template): Observable<any> {
         return this.http.post<Template>(this.baseUrl + 'template', template);
     }
+
+    public sendEmail(template: Template): Observable<any> {
+        return this.http.post<Template>(this.baseUrl + 'sened', template);
+    }
 }
